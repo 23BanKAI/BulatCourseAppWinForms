@@ -6,7 +6,7 @@ class HungarianAlgorithm
     public void Algorithm(int[,] matrix)
     {
         // Матрица
-        
+
 
         // Получаем размеры матрицы
         int n = matrix.GetLength(0);
@@ -88,13 +88,29 @@ class HungarianAlgorithm
                 ans[p[j] - 1] = j - 1;
             }
         }
+
+
         string textToFile = "Optimal assignment:\n";
+
+       
         // Выводим оптимальное назначение
-      
+
         for (int i = 0; i < n; ++i)
         {
-           textToFile += ($"Worker {(i + 1)} is assigned to job {(ans[i] + 1)}\n");
+            textToFile += ($"Worker {(i + 1)} is assigned to job {(ans[i] + 1)}\n");
         }
+
+        int routeLength = 0;
+        for (int i = 0; i < n; i++)
+        {
+            int j = ans[i];
+            if (j >= 0 && j < m)
+            {
+                routeLength += matrix[i, j];
+            }
+        }
+        textToFile += ($"Optimal assignment route length: {routeLength}\n");
+
         SaveFileDialog saveFileDialog = new SaveFileDialog();
         saveFileDialog.Title = "Save file";
         saveFileDialog.Filter = "Text files (*.txt)|*.txt";
@@ -107,4 +123,5 @@ class HungarianAlgorithm
             File.WriteAllText(filePath, textToFile);
         }
     }
+
 }

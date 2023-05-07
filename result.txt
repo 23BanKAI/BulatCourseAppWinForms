@@ -3,3 +3,4 @@ Worker 1 is assigned to job 2
 Worker 2 is assigned to job 4
 Worker 3 is assigned to job 3
 Worker 4 is assigned to job 1
+Optimal assignment route length: 10
